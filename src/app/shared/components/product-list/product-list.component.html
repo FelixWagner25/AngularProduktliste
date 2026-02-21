@@ -1,0 +1,28 @@
+<section class="product-table-wrapper">
+  <table class="product-table" role="grid" aria-describedby="Produktliste">
+    <thead>
+      <tr>
+        <th>Produkt</th>
+        <th>Beschreibung</th>
+        <th>Bestand</th>
+        <th>Preis(€)</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of list; track product.name; let index = $index) {
+        <tr role="link">
+          <td>{{ product.name }}</td>
+          <td>{{ product.description }}</td>
+          <td>
+            <span class="badge ok">{{ product.stock }}</span>
+          </td>
+          <td class="price">{{ product.price }}</td>
+          <td><a class="btn--view" aria-label="Details anzeigen"></a></td>
+        </tr>
+      } @empty {
+        <p>No products available</p>
+      }
+    </tbody>
+  </table>
+</section>
