@@ -11,7 +11,7 @@
     </thead>
     <tbody>
       @for (product of list; track product.name; let index = $index) {
-        <tr role="link">
+        <tr [routerLink]="['detail', product.name]" role="link">
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>
