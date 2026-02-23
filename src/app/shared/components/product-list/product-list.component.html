@@ -17,7 +17,7 @@
           <td>
             <span class="badge ok">{{ product.stock }}</span>
           </td>
-          <td class="price">{{ product.price }}</td>
+          <td class="price">{{ product.price | currency: 'EUR' }}</td>
           <td><a class="btn--view" aria-label="Details anzeigen"></a></td>
         </tr>
       } @empty {
