@@ -1,11 +1,18 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Product } from '../interfaces/product';
 import { Router } from '@angular/router';
+import { createClient } from '@supabase/supabase-js';
+// Create a single supabase client for interacting with your database
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  supabase = createClient(
+    'https://qpvubpagfkjnaaddknqw.supabase.co',
+    'sb_publishable_5QMGVm710qAEeNoXeVqmTg_g7qKCXlS',
+  );
+
   private productList = signal<Product[]>([]);
 
   router = inject(Router);
@@ -43,7 +50,15 @@ export class ProductService {
     this.productList.update((list) => list.map((p) => (p.name === product.name ? product : p)));
   }
 
+  async getAllProducts() {
+    let response = await this.supabase.from('products2').select('*');
+    console.log(response.data);
+    this.productList.set((response.data ?? []) as Product[]);
+  }
+
   constructor() {
+    this.getAllProducts();
+
     this.productList.set([
       {
         name: 'Gaming Maus',
