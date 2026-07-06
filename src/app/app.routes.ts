@@ -7,7 +7,7 @@ import { ProductFormEditComponent } from './shared/components/product-form-edit/
 
 export const routes: Routes = [
   { path: '', component: ProductListComponent },
-  { path: 'detail/:name', component: ProductDetailComponent },
+  { path: 'detail/:id', component: ProductDetailComponent },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: 'productform', component: ProductFormComponent },
   { path: 'edit', component: ProductFormEditComponent },

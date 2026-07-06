@@ -32,20 +32,7 @@ export class ProductFormComponent {
   });
 
   onSubmit() {
-    // TODO
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
-
-      // let product: Product = {
-      //   name: this.productForm.value.name ? this.productForm.value.name : 'n/a',
-      //   description: this.productForm.value.description
-      //     ? this.productForm.value.description
-      //     : 'n/a',
-      //   specs: '',
-      //   stock: this.productForm.value.stock ? this.productForm.value.stock : 0,
-      //   price: this.productForm.value.price ? this.productForm.value.price : 0,
-      // };
-
       let product = new ProductModel(this.productForm.value);
 
       this.productService.addProduct(product);
